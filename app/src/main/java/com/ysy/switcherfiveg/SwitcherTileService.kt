@@ -1,15 +1,19 @@
 package com.ysy.switcherfiveg
 
+import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Icon
+import android.os.Build
 import android.os.IBinder
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
+@SuppressLint("StartActivityAndCollapseDeprecated")
 class SwitcherTileService : TileService() {
 
     companion object {
@@ -51,9 +55,21 @@ class SwitcherTileService : TileService() {
         }
         if (!FSApp.isSettingsInitDone) {
             R.string.toast_settings_not_init.showToastLong()
-            startActivityAndCollapse(Intent(FSApp.getContext(), MainActivity::class.java).apply {
+            val intent = Intent(FSApp.getContext(), MainActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            })
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                startActivityAndCollapse(
+                    PendingIntent.getActivity(
+                        FSApp.getContext(),
+                        0,
+                        intent,
+                        PendingIntent.FLAG_IMMUTABLE
+                    )
+                )
+            } else {
+                startActivityAndCollapse(intent)
+            }
             return
         }
         toggle()
@@ -74,13 +90,25 @@ class SwitcherTileService : TileService() {
                     })
             }
         } else {
-            startActivityAndCollapse(Intent().apply {
+            val intent = Intent().apply {
                 component = ComponentName(
                     "Y29tLmFuZHJvaWQucGhvbmU=".convertRuntimeName(),
                     "Y29tLmFuZHJvaWQucGhvbmUuc2V0dGluZ3MuUHJlZmVycmVkTmV0d29ya1R5cGVMaXN0UHJlZmVyZW5jZQ==".convertRuntimeName()
                 )
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            })
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                startActivityAndCollapse(
+                    PendingIntent.getActivity(
+                        FSApp.getContext(),
+                        0,
+                        intent,
+                        PendingIntent.FLAG_IMMUTABLE
+                    )
+                )
+            } else {
+                startActivityAndCollapse(intent)
+            }
         }
     }
 
