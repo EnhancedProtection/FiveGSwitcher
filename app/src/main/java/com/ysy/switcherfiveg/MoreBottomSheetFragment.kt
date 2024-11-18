@@ -8,6 +8,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -95,7 +96,11 @@ class MoreBottomSheetFragment : BottomSheetDialogFragment() {
                                 "Y29tLmFuZHJvaWQucGhvbmU=".convertRuntimeName(),
                                 "Y29tLmFuZHJvaWQucGhvbmUuc2V0dGluZ3MuUHJlZmVycmVkTmV0d29ya1R5cGVMaXN0UHJlZmVyZW5jZQ==".convertRuntimeName()
                             )
-                        })
+                        }) {
+                            context.tryStartActivity(Intent(Settings.ACTION_DATA_ROAMING_SETTINGS).apply {
+                                `package` = "com.android.settings"
+                            })
+                        }
                         true
                     }
                 }
@@ -171,7 +176,11 @@ class MoreBottomSheetFragment : BottomSheetDialogFragment() {
                         "Y29tLmFuZHJvaWQucGhvbmU=".convertRuntimeName(),
                         "Y29tLmFuZHJvaWQucGhvbmUuc2V0dGluZ3MuTW9iaWxlTmV0d29ya1NldHRpbmdz".convertRuntimeName()
                     )
-                })
+                }) {
+                    context.tryStartActivity(Intent(Settings.ACTION_DATA_ROAMING_SETTINGS).apply {
+                        `package` = "com.android.settings"
+                    })
+                }
                 activity?.finish()
                 true
             }
@@ -182,7 +191,11 @@ class MoreBottomSheetFragment : BottomSheetDialogFragment() {
                         "Y29tLmFuZHJvaWQucGhvbmU=".convertRuntimeName(),
                         "Y29tLmFuZHJvaWQucGhvbmUuc2V0dGluZ3MuUHJlZmVycmVkTmV0d29ya1R5cGVMaXN0UHJlZmVyZW5jZQ==".convertRuntimeName()
                     )
-                })
+                }) {
+                    context.tryStartActivity(Intent(Settings.ACTION_DATA_ROAMING_SETTINGS).apply {
+                        `package` = "com.android.settings"
+                    })
+                }
                 activity?.finish()
                 true
             }
