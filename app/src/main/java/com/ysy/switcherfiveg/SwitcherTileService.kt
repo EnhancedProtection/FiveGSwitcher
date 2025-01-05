@@ -8,10 +8,12 @@ import android.content.Intent
 import android.graphics.drawable.Icon
 import android.os.Build
 import android.os.IBinder
+import android.provider.Settings
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.blankj.utilcode.util.IntentUtils
 
 @SuppressLint("StartActivityAndCollapseDeprecated")
 class SwitcherTileService : TileService() {
@@ -90,12 +92,17 @@ class SwitcherTileService : TileService() {
                     })
             }
         } else {
-            val intent = Intent().apply {
+            var intent = Intent().apply {
                 component = ComponentName(
                     "Y29tLmFuZHJvaWQucGhvbmU=".convertRuntimeName(),
                     "Y29tLmFuZHJvaWQucGhvbmUuc2V0dGluZ3MuUHJlZmVycmVkTmV0d29ya1R5cGVMaXN0UHJlZmVyZW5jZQ==".convertRuntimeName()
                 )
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            if (!IntentUtils.isIntentAvailable(intent)) {
+                intent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS).apply {
+                    `package` = "com.android.settings"
+                }
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
                 startActivityAndCollapse(

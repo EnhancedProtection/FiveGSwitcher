@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">5G開關</string>
+
+    <string name="five_g_tile_label">5G開關</string>
+    <string name="settings_main_title_not_support">抱歉，本裝置不支援5G</string>
+    <string name="settings_enable_5g">開啟/關閉5G</string>
+    <string name="settings_enable_5g_summary">快捷開關無反應時，可在此處切換</string>
+    <string name="settings_select_mode">選擇模式</string>
+    <string name="settings_select_mode_summary">根據需要選擇不同的運行模式</string>
+    <string name="settings_select_mode_summary_new">新版本系統已不支援</string>
+    <string name="settings_to_mobile_net_settings">行動網路設定</string>
+    <string name="settings_to_mns_summary">管理雙卡與行動網路</string>
+    <string name="settings_to_network_type_settings">網路類型選擇</string>
+    <string name="settings_to_nts_summary">快速切換5G/4G/3G等網路優先</string>
+    <string name="settings_edit_label">編輯快捷開關顯示名稱</string>
+    <string name="settings_edit_label_summary">不超過6個字元喔</string>
+    <string name="settings_about_title">關於</string>
+    <string name="settings_love_support">讚賞支持</string>
+    <string name="settings_love_support_summary">如果喜歡，一切隨緣，理想消費，健康生活</string>
+    <string name="settings_dev_home">\@ysy950803，關注我，發現更多</string>
+    <string name="settings_dev_home_summary">開發者主頁</string>
+
+    <string-array name="entries">
+        <item>自動</item>
+        <item>Shizuku</item>
+        <item>Root</item>
+    </string-array>
+    <string name="toast_settings_not_init">請從桌面圖示或長按快捷開關初始化設定</string>
+    <string name="toast_pls_check_perm">切換失敗，請檢查Shizuku或Root權限授權</string>
+    <string name="toast_not_support_root">本裝置未Root，不可選擇</string>
+    <string name="dialog_pls_check_root_app">裝置已Root，可優先選擇Root模式，請在系統設定或Magisk中授予本應用Root權限</string>
+    <string name="dialog_pls_check_shizuku_msg_1">推薦使用Shizuku模式，但其依賴元件未安裝，請先下載安裝並正確設定</string>
+    <string name="dialog_pls_check_shizuku_msg_2">Shizuku版本過低，請先升級並正確設定</string>
+    <string name="dialog_pls_check_shizuku_msg_3">Shizuku已多次拒絕授權給本應用，請手動允許</string>
+    <string name="dialog_pls_check_shizuku_install">去安裝Shizuku</string>
+    <string name="dialog_pls_check_shizuku_upgrade">去升級Shizuku</string>
+    <string name="dialog_pls_check_shizuku_settings">已安裝，去設定</string>
+    <string name="dialog_pls_check_shizuku_allow">去允許</string>
+    <string name="dialog_pls_check_shizuku_cancel">知道了</string>
+</resources>
